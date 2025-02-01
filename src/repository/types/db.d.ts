@@ -11,6 +11,17 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
+export interface File {
+  id: Generated<string>;
+  name: string;
+  path: string;
+  size: string;
+  type: string;
+  updated_at: Generated<Timestamp>;
+  uploaded_at: Generated<Timestamp>;
+  uploaded_by: string;
+}
+
 export interface User {
   created_at: Generated<Timestamp>;
   email: string;
@@ -23,5 +34,6 @@ export interface User {
 }
 
 export interface DB {
+  file: File;
   user: User;
 }

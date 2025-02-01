@@ -6,6 +6,7 @@ export enum Role {
 }
 export interface DatabaseTypes {
   user: UserTable;
+  file: FileTable;
 }
 
 export interface UserTable {
@@ -22,3 +23,19 @@ export interface UserTable {
 export type User = Selectable<UserTable>;
 export type NewUser = Insertable<UserTable>;
 export type UserUpdate = Updateable<UserTable>;
+
+export interface FileTable {
+  id: Generated<number>;
+  name: string;
+  type: string;
+  size: string;
+  path: string;
+  uploaded_at: Date;
+  updated_at: Date;
+  uploaded_by: number;
+}
+
+
+export type File = Selectable<FileTable>;
+export type NewFile = Insertable<FileTable>;
+export type FileUpdate = Updateable<FileTable>;
