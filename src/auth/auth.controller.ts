@@ -58,12 +58,9 @@ export class AuthController {
     return { message: 'Logged out successfully' };
   }
 
-  // Example of a PROTECTED route
   @Get('profile')
-  @UseGuards(JwtAuthGuard) // 🔒 Step 1: Guard checks authentication
+  @UseGuards(JwtAuthGuard)
   getProfile(@CurrentUser() user: any): any {
-    // 🔒 Step 2: @CurrentUser() extracts user from request
-    // user = { email: '...', sub: 'uuid', role: 'user' }
     return {
       message: 'This is your profile',
       user: {
